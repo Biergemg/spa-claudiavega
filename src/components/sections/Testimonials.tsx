@@ -7,15 +7,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    text: "Excelente lugar para relajarte y cuidar tu piel. Muy buena atención.",
+    text: "Excelente atención y resultados en mi facial. El ambiente es muy relajante.",
     author: "Cliente verificado"
   },
   {
-    text: "Instalaciones cómodas y ambiente agradable.",
+    text: "Un lugar perfecto para desconectarte del estrés.",
     author: "Cliente frecuente"
   },
   {
-    text: "Un buen espacio para desconectarte del estrés.",
+    text: "Instalaciones muy cómodas y personal muy profesional.",
     author: "Visita de primera vez"
   }
 ];

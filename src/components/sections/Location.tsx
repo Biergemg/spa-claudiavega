@@ -57,12 +57,10 @@ export const Location = () => {
           
           <div className="space-y-4 font-sans text-brand-carbon/70 text-lg md:text-xl leading-relaxed mb-10">
             <p>
-              Ubicados en Av. Tamaulipas, Unidad Nacional
-              <br />
-              Cd. Madero, Tamaulipas.
+              Nos encontramos en Av. Tamaulipas, Unidad Nacional, Cd. Madero.
             </p>
             <p className="text-base text-brand-carbon/60">
-              Dentro del complejo comercial con estacionamiento disponible para su mayor comodidad.
+              Contamos con acceso dentro del complejo comercial y estacionamiento cercano.
             </p>
           </div>
           

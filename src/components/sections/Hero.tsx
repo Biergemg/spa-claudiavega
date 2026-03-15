@@ -68,21 +68,30 @@ export const Hero = () => {
             ref={headlineRef}
             className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-[1.1]"
           >
-            Un espacio creado para tu bienestar
+            Relájate. Respira. Renueva tu piel.
           </h1>
           
           <p 
             ref={subheadRef}
             className="text-lg md:text-xl text-brand-crema/90 font-sans font-light max-w-xl mb-10 leading-relaxed"
           >
-            Spa Claudia Vega es un lugar donde el cuidado del cuerpo y la relajación profunda se encuentran para ayudarte a desconectar del ritmo diario.
+            Spa Claudia Vega es un espacio dedicado al bienestar, donde combinamos tratamientos profesionales con un ambiente diseñado para relajar cuerpo y mente.
           </p>
           
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4">
-            <Button variant="primary" size="lg">
-              Reservar cita
+            <Button 
+              variant="primary" 
+              size="lg"
+              onClick={() => window.open('https://wa.me/528332721133', '_blank')}
+            >
+              Reservar cita por WhatsApp
             </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-carbon">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-white text-white hover:bg-white hover:text-brand-carbon"
+              onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Ver tratamientos
             </Button>
           </div>

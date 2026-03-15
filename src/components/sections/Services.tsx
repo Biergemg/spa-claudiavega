@@ -2,25 +2,40 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Sparkles, Droplets, Wind } from 'lucide-react';
+import { Button } from '../ui/Button';
 
 gsap.registerPlugin(ScrollTrigger);
 
+import { Heart, Flower } from 'lucide-react';
+
 const services = [
   {
-    title: 'Masaje terapéutico',
-    description: 'Alivia tensión muscular, mejora circulación y reduce estrés físico con nuestras técnicas especializadas.',
+    title: 'Masajes terapéuticos',
+    description: 'Relaja la tensión muscular y mejora la circulación con nuestras técnicas especializadas en alivio de estrés.',
     icon: Wind,
     image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   },
   {
     title: 'Faciales especializados',
-    description: 'Tratamientos profesionales para revitalizar tu piel, limpiar impurezas y mejorar su apariencia natural.',
+    description: 'Tratamientos profesionales diseñados para limpiar impurezas, hidratar y revelar la luminosidad natural de tu rostro.',
     icon: Sparkles,
     image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   },
   {
+    title: 'Tratamientos rejuvenecedores',
+    description: 'Técnicas avanzadas para atenuar líneas de expresión y mantener la vitalidad de tu piel a lo largo del tiempo.',
+    icon: Heart,
+    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    title: 'Cuidado de la piel',
+    description: 'Protocolos dermatológicos de alta nutrición y corrección específica para distintos biotipos cutáneos.',
+    icon: Flower,
+    image: 'https://images.unsplash.com/photo-1552693673-1bf958298935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+  },
+  {
     title: 'Experiencias de relajación',
-    description: 'Rituales diseñados para ayudarte a recuperar tu equilibrio interno, elevar tu energía y encontrar la calma.',
+    description: 'Rituales inmersivos que envuelven tus sentidos para ayudarte a recuperar tu equilibrio interno y energía.',
     icon: Droplets,
     image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
   }
@@ -103,6 +118,16 @@ export const Services = () => {
               </p>
             </div>
           ))}
+        </div>
+        <div className="mt-16 text-center">
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="border-brand-carbon text-brand-carbon hover:bg-brand-carbon hover:text-white"
+            onClick={() => window.open('https://wa.me/528332721133', '_blank')}
+          >
+            Reservar consulta por WhatsApp
+          </Button>
         </div>
       </div>
     </section>
