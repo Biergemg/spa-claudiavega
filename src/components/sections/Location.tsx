@@ -87,7 +87,7 @@ export const Location = () => {
               size="md"
               aria-label="Abrir mapa de ubicación en Google Maps"
               className="hover:scale-105 transition-transform duration-300"
-              onClick={() => window.open('https://maps.google.com/?q=Av+Tamaulipas+SN+Unidad+Nacional+89410+Ciudad+Madero+Tamaulipas', '_blank')}
+              onClick={() => window.open('https://maps.app.goo.gl/7wYbwocUbGLYUaAZ8?g_st=aw', '_blank')}
             >
               Abrir en Google Maps
             </Button>
