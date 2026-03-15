@@ -7,9 +7,8 @@ export const Footer = () => {
         
         {/* Brand & Location */}
         <div className="flex flex-col gap-6 md:gap-8">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Spa Claudia Vega" className="h-14 w-auto object-contain brightness-0 invert opacity-90" />
-            <h2 className="font-serif text-3xl hidden md:block">Spa Claudia Vega</h2>
+          <div className="flex items-start">
+            <img src="/logo.png" alt="Spa Claudia Vega" className="h-20 md:h-24 w-auto object-contain brightness-0 invert opacity-90" />
           </div>
           <div className="font-sans text-brand-crema/60 space-y-2">
             <p>Av. Tamaulipas, Unidad Nacional</p>
