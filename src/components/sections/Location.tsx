@@ -11,7 +11,8 @@ export const Location = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.location-content > *', {
+      // Fade-up de la tarjeta izquierda y contenido
+      gsap.from('.location-card > *', {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 80%',
@@ -22,7 +23,21 @@ export const Location = () => {
         stagger: 0.15,
         ease: 'power3.out'
       });
+
+      // Fade-up del texto SEO local
+      gsap.from('.seo-text', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+        },
+        y: 20,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
+        delay: 0.5
+      });
       
+      // Iframe de Google Maps
       gsap.from('.location-map', {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -46,37 +61,51 @@ export const Location = () => {
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 lg:gap-20 items-center">
         
-        <div className="location-content md:w-1/2 flex flex-col items-start bg-white p-10 md:p-14 rounded-[2rem] md:rounded-[3rem]">
-          <div className="bg-brand-rosa/20 p-4 rounded-full mb-8 text-brand-rosa">
-            <MapPin size={32} />
+        {/* Lado izquierdo con Contenido principal + Texto SEO */}
+        <div className="w-full md:w-1/2 flex flex-col gap-8">
+          <div className="location-card flex flex-col items-start bg-white p-10 md:p-14 rounded-[2rem] md:rounded-[3rem] shadow-sm">
+            <div className="bg-brand-rosa/20 p-4 rounded-full mb-8 text-brand-rosa">
+              <MapPin size={32} />
+            </div>
+            
+            <h2 className="text-3xl md:text-5xl font-serif text-brand-carbon mb-6 tracking-tight">
+              Nuestra Ubicación
+            </h2>
+            
+            <div className="space-y-4 font-sans text-brand-carbon/70 text-lg md:text-xl leading-relaxed mb-10">
+              <p>
+                Nos encontramos en Av. Tamaulipas S/N,<br />
+                Unidad Nacional, Ciudad Madero.
+              </p>
+              <p className="text-base text-brand-carbon/60">
+                Contamos con acceso dentro del complejo comercial y estacionamiento cercano.
+              </p>
+            </div>
+            
+            <Button 
+              variant="outline" 
+              size="md"
+              aria-label="Abrir mapa de ubicación en Google Maps"
+              className="hover:scale-105 transition-transform duration-300"
+              onClick={() => window.open('https://maps.google.com/?q=Av+Tamaulipas+SN+Unidad+Nacional+89410+Ciudad+Madero+Tamaulipas', '_blank')}
+            >
+              Abrir en Google Maps
+            </Button>
           </div>
-          
-          <h2 className="text-3xl md:text-5xl font-serif text-brand-carbon mb-6 tracking-tight">
-            Nuestra Ubicación
-          </h2>
-          
-          <div className="space-y-4 font-sans text-brand-carbon/70 text-lg md:text-xl leading-relaxed mb-10">
-            <p>
-              Nos encontramos en Av. Tamaulipas, Unidad Nacional, Cd. Madero.
-            </p>
-            <p className="text-base text-brand-carbon/60">
-              Contamos con acceso dentro del complejo comercial y estacionamiento cercano.
-            </p>
+
+          {/* Mejora SEO Local */}
+          <div className="seo-text px-4 md:px-8 text-brand-carbon/60 font-sans text-sm leading-relaxed">
+            <p className="font-semibold text-brand-carbon mb-1">Spa Claudia Vega</p>
+            <p>Av. Tamaulipas S/N</p>
+            <p>Unidad Nacional</p>
+            <p>89410 Ciudad Madero, Tamaulipas</p>
           </div>
-          
-          <Button 
-            variant="outline" 
-            size="md"
-            aria-label="Abrir mapa de ubicación en Google Maps"
-            onClick={() => window.open('https://maps.google.com/?q=Av.+Tamaulipas,+Unidad+Nacional,+Cd.+Madero+', '_blank')}
-          >
-            Abrir en Google Maps
-          </Button>
         </div>
 
+        {/* Lado derecho con El Mapa Embebido */}
         <div className="location-map md:w-1/2 w-full h-[400px] md:h-[600px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative">
           <iframe 
-            src="https://www.google.com/maps?q=Av.%20Tamaulipas%20Unidad%20Nacional%20Cd.%20Madero%20Tamaulipas&output=embed" 
+             src="https://www.google.com/maps?q=Av%20Tamaulipas%20SN%20Unidad%20Nacional%20Ciudad%20Madero%20Tamaulipas&output=embed"
             className="absolute inset-0 w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-1000" 
             allowFullScreen={false} 
             loading="lazy" 
