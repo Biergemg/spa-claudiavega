@@ -1,4 +1,4 @@
-import { MapPin, Instagram, MessageCircle } from 'lucide-react';
+import { MapPin, Facebook, MessageCircle } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -27,12 +27,12 @@ export const Footer = () => {
               <MapPin size={24} className="text-brand-crema/70 group-hover:text-white transition-colors" />
             </a>
             <a 
-              href="#" 
+              href="https://www.facebook.com/share/1DwmJ1DDnF/" 
               target="_blank" 
               rel="noreferrer"
               className="p-3 bg-white/5 hover:bg-white/10 rounded-full transition-colors group"
             >
-              <Instagram size={24} className="text-brand-crema/70 group-hover:text-white transition-colors" />
+              <Facebook size={24} className="text-brand-crema/70 group-hover:text-white transition-colors" />
             </a>
             <a 
               href="https://wa.me/528332721133" 
