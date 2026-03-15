@@ -67,6 +67,7 @@ export const Location = () => {
           <Button 
             variant="outline" 
             size="md"
+            aria-label="Abrir mapa de ubicación en Google Maps"
             onClick={() => window.open('https://maps.google.com/?q=Av.+Tamaulipas,+Unidad+Nacional,+Cd.+Madero+', '_blank')}
           >
             Abrir en Google Maps
@@ -75,7 +76,7 @@ export const Location = () => {
 
         <div className="location-map md:w-1/2 w-full h-[400px] md:h-[600px] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d14545.926211287933!2d-97.8540417!3d22.2536855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d7fbd8723f5b87%3A0xe9efef5bc6859e94!2sUnidad%20Nacional%2C%20Cd%20Madero%2C%20Tamps.!5e0!3m2!1sen!2smx!4v1700000000000!5m2!1sen!2smx" 
+            src="https://www.google.com/maps?q=Av.%20Tamaulipas%20Unidad%20Nacional%20Cd.%20Madero%20Tamaulipas&output=embed" 
             className="absolute inset-0 w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-1000" 
             allowFullScreen={false} 
             loading="lazy" 

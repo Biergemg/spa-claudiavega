@@ -124,7 +124,8 @@ export const Services = () => {
             variant="outline" 
             size="lg" 
             className="border-brand-carbon text-brand-carbon hover:bg-brand-carbon hover:text-white"
-            onClick={() => window.open('https://wa.me/528332721133', '_blank')}
+            aria-label="Reservar consulta por WhatsApp"
+            onClick={() => window.open('https://wa.me/528332721133?text=Hola%20quiero%20información%20sobre%20los%20tratamientos', '_blank')}
           >
             Reservar consulta por WhatsApp
           </Button>

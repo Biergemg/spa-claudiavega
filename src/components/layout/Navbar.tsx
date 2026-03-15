@@ -77,6 +77,8 @@ export const Navbar = () => {
             variant={isScrolled ? 'primary' : 'outline'} 
             size="sm" 
             className={!isScrolled ? 'border-white text-white hover:bg-white hover:text-brand-carbon' : ''}
+            aria-label="Reservar cita"
+            onClick={() => window.open('https://wa.me/528332721133?text=Hola%20quiero%20información%20sobre%20los%20tratamientos', '_blank')}
           >
             Reservar cita
           </Button>
@@ -104,7 +106,14 @@ export const Navbar = () => {
               {link.name}
             </a>
           ))}
-          <Button variant="primary" className="mt-4 w-full">Reservar cita</Button>
+          <Button 
+            variant="primary" 
+            className="mt-4 w-full"
+            aria-label="Reservar cita"
+            onClick={() => window.open('https://wa.me/528332721133?text=Hola%20quiero%20información%20sobre%20los%20tratamientos', '_blank')}
+          >
+            Reservar cita
+          </Button>
         </div>
       )}
     </header>

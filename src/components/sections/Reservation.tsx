@@ -46,8 +46,9 @@ export const Reservation = () => {
         <Button 
           variant="primary" 
           size="lg" 
-          className="bg-white text-brand-carbon hover:bg-brand-crema px-12 py-8 text-lg md:text-xl rounded-full shadow-xl hover:scale-105 transition-transform duration-300"
-          onClick={() => window.open('https://wa.me/528332721133', '_blank')}
+          className="bg-brand-beige text-white hover:bg-brand-carbon px-12 py-8 text-lg md:text-xl rounded-full shadow-xl hover:scale-105 transition-transform duration-300 flex items-center gap-3 mx-auto"
+          aria-label="Reservar cita por WhatsApp"
+          onClick={() => window.open('https://wa.me/528332721133?text=Hola%20quiero%20información%20sobre%20los%20tratamientos', '_blank')}
         >
           Reservar cita por WhatsApp
         </Button>

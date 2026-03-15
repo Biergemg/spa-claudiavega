@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { Button } from '../ui/Button';
+import { ChevronDown } from 'lucide-react';
 
 export const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -36,6 +37,12 @@ export const Hero = () => {
           { y: 20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.8 },
           '-=0.6'
+        )
+        .fromTo(
+          '.scroll-indicator',
+          { opacity: 0, y: -10 },
+          { opacity: 0.8, y: 0, duration: 1, repeat: -1, yoyo: true, ease: 'power1.inOut' },
+          '-=0.2'
         );
     }, heroRef);
 
@@ -82,7 +89,8 @@ export const Hero = () => {
             <Button 
               variant="primary" 
               size="lg"
-              onClick={() => window.open('https://wa.me/528332721133', '_blank')}
+              aria-label="Reservar cita por WhatsApp"
+              onClick={() => window.open('https://wa.me/528332721133?text=Hola%20quiero%20información%20sobre%20los%20tratamientos', '_blank')}
             >
               Reservar cita por WhatsApp
             </Button>
@@ -90,12 +98,19 @@ export const Hero = () => {
               variant="outline" 
               size="lg" 
               className="border-white text-white hover:bg-white hover:text-brand-carbon"
+              aria-label="Ver tratamientos"
               onClick={() => document.getElementById('servicios')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Ver tratamientos
             </Button>
           </div>
         </div>
+      </div>
+      
+      {/* Scroll Indicator */}
+      <div className="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/70">
+        <span className="font-sans text-xs uppercase tracking-widest">Descubrir</span>
+        <ChevronDown size={20} className="animate-bounce" />
       </div>
     </section>
   );

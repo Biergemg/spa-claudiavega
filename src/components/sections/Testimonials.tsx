@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Quote } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,103 +15,84 @@ const testimonials = [
     author: "Cliente frecuente"
   },
   {
-    text: "Instalaciones muy cómodas y personal muy profesional.",
+    text: "Instalaciones muy cómodas y personal profesional.",
     author: "Visita de primera vez"
   }
 ];
 
 export const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLQuoteElement>(null);
-  const timerRef = useRef<number | null>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(sectionRef.current, {
+      // Título fade up
+      gsap.from('.testim-title', {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 80%',
         },
-        y: 50,
+        y: 30,
         opacity: 0,
-        duration: 1.5,
+        duration: 1,
         ease: 'power3.out'
+      });
+
+      // Tarjetas escalonadas
+      cardsRef.current.forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+          },
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out',
+          delay: i * 0.15
+        });
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const changeTestimonial = (index: number) => {
-    if (index === currentIndex) return;
-    
-    gsap.to(textRef.current, {
-      opacity: 0,
-      y: 10,
-      duration: 0.4,
-      onComplete: () => {
-        setCurrentIndex(index);
-        gsap.to(textRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: 'power2.out'
-        });
-      }
-    });
-
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      startAutoPlay();
-    }
-  };
-
-  const startAutoPlay = () => {
-    timerRef.current = window.setInterval(() => {
-      setCurrentIndex(prev => {
-        const next = (prev + 1) % testimonials.length;
-        changeTestimonial(next);
-        return prev; // Value is updated inside changeTestimonial's callback implicitly, actually we just need the calculation
-      });
-    }, 6000);
-  };
-
-  useEffect(() => {
-    startAutoPlay();
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, []);
-
   return (
     <section 
       ref={sectionRef} 
-      className="py-24 md:py-32 px-6 bg-white relative overflow-hidden flex flex-col items-center justify-center min-h-[500px]"
+      className="py-24 md:py-32 px-6 bg-brand-crema"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-brand-crema/40 z-0">
-        <Quote size={240} className="transform -scale-x-100" />
-      </div>
-
-      <div className="max-w-4xl mx-auto text-center relative z-10 px-4">
-        <blockquote ref={textRef} className="min-h-[200px] flex flex-col justify-center items-center">
-          <p className="text-2xl md:text-4xl lg:text-5xl font-serif text-brand-carbon leading-[1.4] mb-8">
-            "{testimonials[currentIndex].text}"
+      <div className="max-w-7xl mx-auto">
+        <div className="testim-title text-center mb-16 md:mb-24">
+          <h2 className="text-3xl md:text-5xl text-brand-carbon mb-6 tracking-tight font-serif">
+            Experiencias Reales
+          </h2>
+          <p className="font-sans text-brand-carbon/70 max-w-2xl mx-auto text-lg">
+            Lo que nuestros clientes dicen sobre su momento de bienestar con nosotros.
           </p>
-          <footer className="text-brand-carbon/60 font-sans tracking-widest uppercase text-sm">
-            — {testimonials[currentIndex].author}
-          </footer>
-        </blockquote>
+        </div>
 
-        <div className="flex justify-center gap-3 mt-10">
-          {testimonials.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => changeTestimonial(idx)}
-              className={`h-2 rounded-full transition-all duration-500 ease-out 
-                ${currentIndex === idx ? 'w-12 bg-brand-beige' : 'w-2 bg-brand-beige/30 hover:bg-brand-beige/50'}`}
-              aria-label={`Ver testimonio ${idx + 1}`}
-            />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testim, index) => (
+            <div 
+              key={index}
+              ref={el => { cardsRef.current[index] = el; }}
+              className="bg-white p-10 rounded-[2rem] shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex gap-1 mb-6 text-brand-beige">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={20} fill="currentColor" strokeWidth={0} />
+                  ))}
+                </div>
+                <p className="font-sans text-brand-carbon/80 text-lg leading-relaxed mb-8 italic">
+                  "{testim.text}"
+                </p>
+              </div>
+              <p className="font-sans text-sm font-medium tracking-wide text-brand-carbon uppercase opacity-60">
+                — {testim.author}
+              </p>
+            </div>
           ))}
         </div>
       </div>
