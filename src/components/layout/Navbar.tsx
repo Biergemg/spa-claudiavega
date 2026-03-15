@@ -54,8 +54,9 @@ export const Navbar = () => {
         `}
       >
         {/* Logo */}
-        <a href="#inicio" className="font-serif text-xl tracking-wide font-medium">
-          Spa Claudia Vega
+        <a href="#inicio" className="flex items-center gap-2">
+          <img src="/logo.png" alt="Spa Claudia Vega" className="h-10 w-auto object-contain drop-shadow-sm" />
+          <span className="font-serif text-xl tracking-wide font-medium hidden sm:inline-block">Spa Claudia Vega</span>
         </a>
 
         {/* Desktop Links */}

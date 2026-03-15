@@ -6,8 +6,11 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
         
         {/* Brand & Location */}
-        <div className="flex flex-col gap-6">
-          <h2 className="font-serif text-3xl">Spa Claudia Vega</h2>
+        <div className="flex flex-col gap-6 md:gap-8">
+          <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="Spa Claudia Vega" className="h-14 w-auto object-contain brightness-0 invert opacity-90" />
+            <h2 className="font-serif text-3xl hidden md:block">Spa Claudia Vega</h2>
+          </div>
           <div className="font-sans text-brand-crema/60 space-y-2">
             <p>Av. Tamaulipas, Unidad Nacional</p>
             <p>Cd. Madero, Tamaulipas, México</p>
